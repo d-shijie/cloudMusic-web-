@@ -1,0 +1,66 @@
+<template>
+  <div class="find">
+    <control-bar @controlClick="controlClick"
+                 class="control"
+                 :items="controlItems"></control-bar>
+
+    <keep-alive><router-view></router-view></keep-alive>
+
+  </div>
+</template>
+
+<script>
+import Scroll from "@/components/Scroll"; // 滑动组件
+import ControlBar from "@/components/ControlBar"; // 上方控制栏组件
+export default {
+  name: "Find",
+  data(){
+    return {
+      controlItems:["个性推荐","歌单","主播电台","排行榜","歌手","最新音乐"], // 控制栏选项
+    }
+  },
+  components:{
+    ControlBar,
+    Scroll
+  },
+  methods:{
+    // 通过下标值改变路径（暴力方法需改进）
+    controlClick(index){
+      switch (index){
+        case 0:
+          this.$router.push("person")
+          break;
+        case 1:
+          this.$router.push("musicMale")
+          break;
+        case 2:
+          this.$router.push("broadcast")
+          break;
+        case 3:
+          this.$router.push("rank")
+          break;
+        case 4:
+          this.$router.push("singer")
+          break;
+        case 5:
+          this.$router.push("newmusic")
+          break;
+      }
+    }
+  },
+
+}
+</script>
+
+<style scoped>
+.control {
+  position: relative;
+  z-index: 1000;
+  margin-left: 1px;
+  background-color: #fff;
+}
+
+.content {
+  height: calc(100% - 120px);
+}
+</style>
