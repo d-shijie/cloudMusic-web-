@@ -3,7 +3,7 @@
     <div class="img">
       <span @click="goto(preIndex)" v-if="isShow"><img src="../assets/img/navbar/上一步(1).png" alt=""></span>
       <span @click="goto(nextIndex)" v-if="isShow"><img src="../assets/img/navbar/下一步(1).png" alt=""></span>
-      <img class="swiper-img" :src="imageList[currentIndex].imageUrl" alt="">
+      <img class="swiper-img" :src="imageList[currentIndex].imageUrl || imageList[currentIndex].pic" alt="">
       <div class="swiper-bottom">
         <ul>
           <li v-for="(item,index) in imageList"
@@ -46,7 +46,6 @@ export default {
         this.goto(this.nextIndex)
       },3000)
     },
-
     goto(index){
       this.currentIndex=index
     }

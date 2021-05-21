@@ -15,6 +15,8 @@ const Broadcast=()=>import("../views/find/boradcast/Boradcast")
 const Rank=()=>import("../views/find/rank/Rank")
 const Singer=()=>import("../views/find/singer/Singer")
 const NewMusic=()=>import("../views/find/newMusic/NewMusic")
+const NewMusicList=()=>import("../views/find/newMusic/NewMusicList")
+const NewAlbum=()=>import("../views/find/newMusic/NewAlbumList")
 // 搜索页面的子路由
 const SingleMusic=()=>import("../views/search/singleMuisc/SingleMusic")
 const Album=()=>import("../views/search/album/Album")
@@ -59,7 +61,21 @@ const routes=[
             },
             {
                 path: "newmusic",
-                component:NewMusic
+                component:NewMusic,
+                children:[
+                    {
+                        path:"",
+                        redirect:"newMusicList"
+                    },
+                    {
+                        path: "newMusicList",
+                        component:NewMusicList
+                    },
+                    {
+                        path:"newAlbum",
+                        component:NewAlbum
+                    }
+                ]
             }
         ]
     },

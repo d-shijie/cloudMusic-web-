@@ -3,9 +3,12 @@
     <control-bar @controlClick="controlClick"
                  class="control"
                  :items="controlItems"></control-bar>
-
-    <keep-alive><router-view></router-view></keep-alive>
-
+    <scroll class="content"
+            @pullingUp="loadMore"
+            ref="scroll"
+            :pull-up-load="true">
+      <keep-alive><router-view ref="router"></router-view></keep-alive>
+    </scroll>
   </div>
 </template>
 
@@ -24,26 +27,35 @@ export default {
     Scroll
   },
   methods:{
+    loadMore(){
+      this.$refs.router.getSinger()
+      this.$refs.scroll.finishPullUp()
+    },
+    imageLoad(){
+      this.$bus.$on("imageLoad",()=>{
+        this.$refs.scroll.refresh()
+      })
+    },
     // 通过下标值改变路径（暴力方法需改进）
     controlClick(index){
       switch (index){
         case 0:
-          this.$router.push("person")
+          this.$router.push("/find/person")
           break;
         case 1:
-          this.$router.push("musicMale")
+          this.$router.push("/find/musicMale")
           break;
         case 2:
-          this.$router.push("broadcast")
+          this.$router.push("/find/broadcast")
           break;
         case 3:
-          this.$router.push("rank")
+          this.$router.push("/find/rank")
           break;
         case 4:
-          this.$router.push("singer")
+          this.$router.push("/find/singer")
           break;
         case 5:
-          this.$router.push("newmusic")
+          this.$router.push("/find/newmusic")
           break;
       }
     }
@@ -61,6 +73,7 @@ export default {
 }
 
 .content {
-  height: calc(100% - 120px);
+  height: calc(100% - 150px);
 }
+
 </style>

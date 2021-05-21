@@ -32,11 +32,21 @@ export default {
       pullUpLoad:this.pullUpLoad, // 下拉加载
       probeType:this.probeType // 滑动显示坐标
     })
+    this.scroll.on("pullingUp",()=>{
+      this.$emit("pullingUp")
+    })
   },
   methods:{
     // 滑动到固定区域
     scrollTo(x,y,time){
       this.scroll.scrollTo(x,y,time)
+    },
+    // 刷新
+    refresh(){
+      this.scroll.refresh()
+    },
+    finishPullUp(){
+      this.scroll.finishPullUp()
     }
   }
 }

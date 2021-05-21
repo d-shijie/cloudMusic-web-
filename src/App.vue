@@ -196,7 +196,6 @@ export default {
         const lyricOffset=this.lyricOffset*20
         getSearch(this.query,20,lyricOffset,1006).then(res=>{
           this.lyricInfo=res.data.result.songs
-          console.log(res.data.result.songs)
         })
         // 电台数据
         const djOffset=this.djOffset*20
