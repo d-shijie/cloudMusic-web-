@@ -32,6 +32,9 @@ export default {
       pullUpLoad:this.pullUpLoad, // 下拉加载
       probeType:this.probeType // 滑动显示坐标
     })
+    this.scroll.on("scroll",position=>{
+      this.$emit("scroll",position)
+    })
     this.scroll.on("pullingUp",()=>{
       this.$emit("pullingUp")
     })

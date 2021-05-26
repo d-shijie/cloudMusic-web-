@@ -25,8 +25,8 @@
     </nav-bar>
     <div class="main">
       <tab-bar class="tab-bar" :tab-bar-item="tabBarItem" ></tab-bar>
-      <keep-alive>
-        <router-view :search-info="searchInfo"
+      <keep-alive exclude="PlayList">
+        <router-view  :search-info="searchInfo"
                      :singer-info="singerInfo"
                      :album-info="albumInfo"
                      :video-info="videoInfo"
@@ -36,7 +36,8 @@
                      :user-info="userInfo"
                      @getMusicId="getMusicId"
                      :my-offset="myOffset"
-                     class="router-view"></router-view></keep-alive>
+                     class="router-view"></router-view>
+      </keep-alive>
       <div v-if="this.$route.path.indexOf('search')!=-1" class="pre-next">
         <img src="./assets/img/navbar/上一步.png" @click="pre" alt="">
         <img src="./assets/img/navbar/下一步.png" @click="next" alt="">
@@ -94,8 +95,18 @@ export default {
     // 调用本组件的方法
     this.searchClick()
     // this.getSong(this.musicId)
+    this.getId()
+
   },
   methods:{
+    getId(){
+      this.$bus.$on("getId",(id)=>{
+        this.musicId=id
+        getSong(this.musicId).then(res=>{
+          this.musicUrl=res.data.data[0].url
+        })
+      })
+    },
     todo(){
       if(this.$route.path.indexOf("search")==-1){
       this.$router.push("/search")

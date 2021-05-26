@@ -45,3 +45,11 @@ export function getCategory(){
         url:"/dj/catelist"
     })
 }
+export function getHotDjs(limit){
+    return request({
+        url:"/dj/toplist/popular",
+        params:{
+            limit
+        }
+    })
+}

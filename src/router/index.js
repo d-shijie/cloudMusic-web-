@@ -4,6 +4,9 @@ Vue.use(VueRouter)
 //起始页左侧五个主路由
 const Find=()=>import("../views/find/Find")
 const Video=()=>import("../views/video/Video")
+// 视频的两个子路由
+const VideoList=()=>import("../views/video/childComp/VideoList")
+const MvList=()=>import("../views/video/childComp/MvList")
 const FM=()=>import("../views/fm/FM")
 const Friend=()=>import("../views/friend/Friend")
 const Living=()=>import("../views/living/Living")
@@ -26,6 +29,8 @@ const SearchUser=()=>import("../views/search/user/User")
 const SearchDj=()=>import("../views/search/livingDj/LivingDj")
 const SearchSinger=()=>import("../views/search/singer/Singer")
 const SearchMusicMale=()=>import("../views/search/musicMale/MusicMale")
+// 歌单路由
+const PlayList=()=>import("../views/playList/PlayList")
 const routes=[
     {
         path:"",
@@ -81,7 +86,22 @@ const routes=[
     },
     {
         path: "/video",
-        component:Video
+        component:Video,
+        children: [
+            {
+                path: "",
+                redirect: "videoList"
+            },
+            {
+                path:"videoList",
+                component:VideoList
+            },
+            {
+                path:"mvList",
+                name:'mvList',
+                component:MvList
+            }
+        ]
     },
     {
         path: "/friend",
@@ -137,6 +157,10 @@ const routes=[
             }
 
         ]
+    },
+    {
+        path: "/playlist/:id",
+        component:PlayList
     }
 ]
 const router=new VueRouter({

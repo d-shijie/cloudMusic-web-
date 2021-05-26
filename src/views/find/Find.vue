@@ -28,7 +28,7 @@ export default {
   },
   methods:{
     loadMore(){
-      this.$refs.router.getSinger()
+      // this.$refs.router.getSinger()
       this.$refs.scroll.finishPullUp()
     },
     imageLoad(){

@@ -44,6 +44,9 @@ li {
   padding: 10px 0;
 
 }
+.control-bar {
+  border-left: 1px solid #aaaaaa;
+}
 .active {
   border-bottom: 3px solid #db0707;
   color: #000000;

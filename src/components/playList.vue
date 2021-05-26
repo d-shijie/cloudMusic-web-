@@ -1,6 +1,7 @@
 <template>
   <div class="play-list">
     <div class="item"
+         @click="itemClick(item.id)"
          @mouseleave="itemLeave(index)"
          @mouseenter="itemEnter(index)"
          v-for="(item,index) in playList">
@@ -32,6 +33,9 @@ export default {
     }
   },
   methods:{
+    itemClick(id){
+      this.$router.push("/playlist/"+id)
+    },
     imageLoad(){
       this.$bus.$emit("imageLoad")
     },

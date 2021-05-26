@@ -95,9 +95,11 @@ export default {
   methods:{
     next(offset){
       this.$emit("next",offset)
+      this.$refs.scroll.scrollTo(0,0,0)
     },
     pre(offset){
       this.$emit("pre",offset)
+      this.$refs.scroll.scrollTo(0,0,0)
     },
     getMusicId(musicId){
       this.musicId=musicId
