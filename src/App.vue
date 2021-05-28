@@ -25,7 +25,7 @@
     </nav-bar>
     <div class="main">
       <tab-bar class="tab-bar" :tab-bar-item="tabBarItem" ></tab-bar>
-      <keep-alive exclude="PlayList">
+      <keep-alive exclude="PlayList,MV">
         <router-view  :search-info="searchInfo"
                      :singer-info="singerInfo"
                      :album-info="albumInfo"
@@ -54,6 +54,7 @@ import {getSong} from "@/network/song"; // 歌曲详情数据（url）
 import NavBar from "@/components/NavBar"; // 最上方导航栏
 import TabBar from "@/components/TabBar"; // 左侧导航栏
 import PageList from "@/components/PageList"; // 分页(传值处理bug)
+import Scroll from "@/components/Scroll";
 export default {
   name: 'App',
   data(){
@@ -96,7 +97,6 @@ export default {
     this.searchClick()
     // this.getSong(this.musicId)
     this.getId()
-
   },
   methods:{
     getId(){
@@ -242,7 +242,8 @@ export default {
   components: {
     PageList,
     TabBar,
-    NavBar
+    NavBar,
+    Scroll
   }
 }
 </script>

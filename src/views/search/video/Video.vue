@@ -1,6 +1,6 @@
 <template>
   <div class="video">
-    <div class="item" v-for="(item,index) in videoInfo">
+    <div class="item" v-for="(item,index) in videoInfo" @click="itemClick(item.vid)">
       <div class="img">
         <div class="play-time"><img class="icon" src="../../../assets/img/goodslist/播放icon.png" alt="">{{item.playTime | playTime}}</div>
         <img :src="item.coverUrl" alt="">
@@ -8,7 +8,6 @@
       </div>
       <div class="desc">{{item.title}}</div>
     </div>
-
   </div>
 </template>
 
@@ -23,6 +22,11 @@ export default {
       }
     }
   },
+  methods:{
+    itemClick(id){
+      this.$router.push("/mv/"+id)
+    }
+  },
   filters:{
     playTime(value){
       if(value<10000){
@@ -35,15 +39,13 @@ export default {
       return (value/1000/60).toFixed(2)
     }
   },
-  computed:{
 
-  }
 }
 </script>
 
 <style scoped>
 .video {
-display: flex;
+  display: flex;
   flex-wrap: wrap;
 }
 .desc {

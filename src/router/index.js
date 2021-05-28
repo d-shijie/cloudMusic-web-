@@ -31,6 +31,8 @@ const SearchSinger=()=>import("../views/search/singer/Singer")
 const SearchMusicMale=()=>import("../views/search/musicMale/MusicMale")
 // 歌单路由
 const PlayList=()=>import("../views/playList/PlayList")
+// MV
+const MV=()=>import("../views/mv/MV")
 const routes=[
     {
         path:"",
@@ -161,6 +163,10 @@ const routes=[
     {
         path: "/playlist/:id",
         component:PlayList
+    },
+    {
+        path: "/mv/:id",
+        component:MV
     }
 ]
 const router=new VueRouter({

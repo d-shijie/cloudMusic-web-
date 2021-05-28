@@ -27,3 +27,43 @@ export function getVideo(id){
         }
     })
 }
+export function getVideoUrl(id){
+    return request({
+        url:"/video/url",
+        params:{
+            id
+        }
+    })
+}
+export function getMvUrl(id){
+    return request({
+        url:"/mv/url",
+        params:{
+            id
+        }
+    })
+}
+export function getMvDetail(mvid){
+    return request({
+        url:"/mv/detail",
+        params:{
+            mvid
+        }
+    })
+}
+export function getMvInfo(mvid){
+    return request({
+        url:"/mv/detail/info",
+        params:{
+            mvid
+        }
+    })
+}
+export function getRelatedMv(id){
+    return request({
+        url:"/related/allvideo",
+        params:{
+            id
+        }
+    })
+}

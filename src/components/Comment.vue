@@ -1,6 +1,6 @@
 <template>
   <div class="comment">
-    <h4 class="title">最新评论</h4>
+    <h4 class="title"><slot name="title"></slot></h4>
    <div class="item" v-for="(item,index) in comments">
      <div class="img">
        <img :src="item.user.avatarUrl" alt="">

@@ -34,7 +34,7 @@
     <control-bar class="control" :items="items" @controlClick="control"></control-bar>
     <Scroll class="content" ref="scroll">
       <MusicList v-if="flag1" :music-list="musicList"></MusicList>
-      <Comment v-if="flag2" :comments="comments"></Comment>
+      <Comment v-if="flag2" :comments="comments"><div slot="title">最新评论</div></Comment>
       <div v-if="flag3" class="collect">
         <h2>收藏</h2>
       </div>
